@@ -1,0 +1,87 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class pos_config extends AEFW_MODULE {
+
+	public function __construct() {
+		parent::__construct();
+	}
+
+	public function __info() {
+		/*
+		 * INFORMATION Module
+		 */
+		return $info = array(
+			'name' => "PoS",
+			'description' => "Description",
+			'version' => "1.0",
+			'permissions_code' => array( //
+				'pos_csr' => 'PoS / [ Invoice (Kasir) | History Transaksi ]', //
+				'pos_closing' => 'PoS / Penutupan Kasir', //
+				'pos_closing_save' => 'PoS / Penutupan Kasir (SaveClose)', //
+				'pos_closing_journal' => 'PoS / Penutupan Kasir (Journal)', //
+				'pos_prm' => 'PoS / Harga Promo', //
+				'pos_prc' => 'PoS / Harga Produk', //
+				'pos_opt' => 'PoS / Options', //
+			),
+		);
+	}
+
+	public function __menu() {
+		/*
+		 * MENU Module
+		 */
+		return $menu = array(
+			'header' => 'PoS',
+			'list' => array(
+				array(
+					'link' => site_url('pos/inv/index'),
+					'label' => 'Invoice (Kasir)',
+					'user' => 'users'
+				),
+				array(
+					'link' => site_url('pos/casier/history'),
+					'label' => 'History Transaksi',
+					'permission' => 'pos_csr'
+				),
+				array(
+					'link' => site_url('pos/closing'),
+					'label' => 'Penutupan Kasir',
+					'permission' => 'pos_closing'
+				),
+				array(
+					'label' => '-',
+					'permission' => 'pos_his|pos_closing|pos_prm|pos_prc|pos_opt'
+				),
+				array(
+					'link' => site_url('pos/pricing/promo'),
+					'label' => 'Harga Promo',
+					'permission' => 'pos_prm'
+				),
+				array(
+					'link' => site_url('pos/pricing/index'),
+					'label' => 'Harga Produk',
+					'permission' => 'pos_prc'
+				),
+				array(
+					'link' => site_url('pos/options/index'),
+					'label' => 'Options',
+					'permission' => 'pos_opt'
+				),
+			),
+		);
+	}
+
+	public function __install() {
+		/*
+		 * Do of install Module
+		 */
+	}
+
+	public function __uninstall() {
+		/*
+		 * Do of uninstall Module
+		 */
+	}
+
+}
