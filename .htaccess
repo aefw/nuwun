@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteBase /aefw3/
+	RewriteBase /
 
 #.rewrite.htaccess
 #.own.rewrite.htaccess
@@ -104,5 +104,9 @@ AddEncoding gzip .svgz
     </FilesMatch>
 </IfModule>
 
-#.module.htaccess
+<IfModule mod_headers.c>
+	Header always set Access-Control-Allow-Headers "X-Requested-With, Content-Type, Authorization, Origin, Accept, Access-Control-Request-Method, Access-Control-Request-Headers, AppId, AEFW-USERS, AEFW-TOKEN, User, Token, Id, Kode, StLogin, Hash"
+	Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+	Header always set Access-Control-Allow-Origin "*"
+</IfModule>
 #.own.module.htaccess
